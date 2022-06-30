@@ -1,11 +1,8 @@
-//═══════════════════════════════════════════════════════//
-//If you want to recode, reupload
-//or copy the codes/script,
-//pls give credit
-//no credit? i will take action immediately
-//© 2022 Xeon Bot Inc. Doge Bot 
-//Thank you to Lord Buddha, Family and Myself
-//════════════════════════════//
+//════════════code═by═Alexa═════════════════════════════════════════//
+//Don't change,copy
+//© 2022 Alexa Bot Inc.
+//Thank you to Lord Buddha, Family and DGXeon
+//═════════════Alexa═══════════════//
 
 const fs = require('fs')
 const chalk = require('chalk')
@@ -21,18 +18,18 @@ global.APIKeys = {
 }
 
 //customize settings\\
-global.owner = ['916909137213']
-global.premium = ['916909137213']
-global.ownernomer = '916909137213'
-global.ownername = '🦄Dream Guy Xeon'
-global.botname = 'Cheems Bot MD V2'
-global.footer = 'Xeon Bot Inc.'
-global.ig = 'https://github.com/DGXeon'
+global.owner = ['947']
+global.premium = ['947']
+global.ownernomer = '947'
+global.ownername = '🌼Alexa team'
+global.botname = 'Queen-Alexa-MD'
+global.footer = 'Alexa Bot Inc.'
+global.ig = 'https://github.com/En-cuzier'
 global.region = 'India, NorthEast, Mizoram'
-global.sc = 'https://github.com/DGXeon/CheemsBot-MD2'
-global.myweb = 'https://youtu.be/imFIX-Wrt3s'
-global.packname = 'Cheems Bot'
-global.author = '🦄Dream Guy Xeon'
+global.sc = 'https://github.com/En-cuzier/Queen-Alexa-MD'
+global.myweb = 'https://youtu.be/'
+global.packname = 'Queen-Alexa'
+global.author = '🌼Alexa team'
 global.sessionName = 'session'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
@@ -61,7 +58,7 @@ global.mess = {
    umpanawal: 5,
    potionawal: 1
 }
-global.thumb = fs.readFileSync('./XeonMedia/cheemspic.jpg')
+global.thumb = fs.readFileSync('./media/Alexa.jpg')
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 global.fluming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=fluffy-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 global.flarun = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=runner-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='

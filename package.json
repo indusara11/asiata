@@ -1,5 +1,5 @@
 {
-  "name": "CheemsBot",
+  "name": "Queen-Alexa",
   "version": "2.0.0",
   "description": "WhatsApp Using Lib Baileys Multi Device",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "bot-md",
     "multi-device"
   ],
-  "author": "Xeon.",
+  "author": "ChamodKeshan.",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys": "^4.0.1",
@@ -64,10 +64,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DGXeon/CheemsBot-MD2.git"
+    "url": "git+https://github.com/ChamodKeshan/Queen-AlexaMD.git"
   },
   "bugs": {
-    "url": "https://github.com/DGXeon/CheemsBot-MD2/issues"
+    "url": "https://github.com/ChamodKeshan/Queen-AlexaMD/issues"
   },
-  "homepage": "https://github.com/DGXeon/CheemsBot-MD2#readme"
+  "homepage": "https://github.com/ChamodKeshan/Queen-AlexaMD#readme"
 }

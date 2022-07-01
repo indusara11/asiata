@@ -57,9 +57,9 @@ if (global.db) setInterval(async () => {
 
 async function startBotInc() {
     const BotInc = BotIncConnect({
-        logger: pino({ level: 'silent' }),
+        logger: pino({ level: 'warn' }),
         printQRInTerminal: true,
-        browser: ['Subscribe Xeon','Safari','1.0.0'],
+        browser: ['Aexa','Safari','3.0'],
         auth: state
     })
 

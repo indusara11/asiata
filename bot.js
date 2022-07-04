@@ -2067,14 +2067,14 @@ break
         })
         }
         break
-	   case '.video': case '.play': case '.song': case '.ytplay': {
+	   case 'video': case 'play': case 'song': case 'ytplay': {
                 if (!text) return reply(`Example : ${prefix + command} Stay`)
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                 let buttons = [
-                    {buttonId: `.mp3 ${anu.url}`, buttonText: {displayText: '🎧AUDIO'}, type: 1},
-                    {buttonId: `.mp4 ${anu.url}`, buttonText: {displayText: '🎬VIDEO️'}, type: 1}
+                    {buttonId: `ytsmp3 ${anu.url}`, buttonText: {displayText: '🎧AUDIO'}, type: 1},
+                    {buttonId: `ytsmp4 ${anu.url}`, buttonText: {displayText: '🎬VIDEO️'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: anu.thumbnail },
@@ -2095,7 +2095,7 @@ break
                 CMD.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-	    case '.mp3': case '.getmusic': case '.audio': {
+	    case 'ytsmp3': case '2song': case 'getmusic': case 'audio': {
                 let { yta } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`)
                 let quality = args[1] ? args[1] : '320kbps'
@@ -2105,7 +2105,7 @@ break
                 CMD.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
-            case '.mp4': case '.getvideo': case '.2video': {
+            case 'ytsmp4': case 'getvideo': case '.2video': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`)
                 let quality = args[1] ? args[1] : '360p'
@@ -3273,7 +3273,7 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
-                    case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'Alexa': case 'amazone':{
+                    case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'alexa': case 'amazone':{
                            	timestampe = speed();
 latensie = speed() - timestampe
  anu = ` `
@@ -3284,42 +3284,38 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./media/Alexa.jpg')},
                             hydratedFooterText: `┌─❖
-│「 Hi 👋 」
-└┬❖ 「 ${pushname} 」
-┌┤✑  Alexa Bot With You Forever 
-││✑  🐶🖐️!!
-│└───────────────┈ ⳹
-│ 「 BOT INFO 」
-│✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-│✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownername}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-│✙ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-│✙ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length}
-└┬──────────────┈ ⳹
-   │✑  Please Select The Button Below
-   └───────────────┈ ⳹`,
+│「 👸*QUEEN ALEXA IS ALIVE NOW* 」
+└┬───────────────
+┌┤□□□□□■■■■□□□□□
+││           │
+││-------------◇Alexa◇------------
+││           │
+││■■■■■□□□□■■■■■
+│└───────────────
+│🤗Hey, I am Alive Now
+│My name is Queen👸Alexa
+│
+│ ❤ජීවිතේ පැරදුනු තැන් බොහොමයි ඒ...❤තනියම හිතෙ දුක තුනීකර ගත්තේ...
+│ ❤ආදරේ ලැබුන්නෑ💔එය බොරුවෙන් පිරිලා ජීවිතේ...
+│
+│'2022 Queen-Alexa [ NEUTROX ]'
+└┬──────────────────┈ ⳹
+   │ ☺Thanks For you use me
+   └─────────────────┈ ⳹`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
+                                    displayText: 'YouTube',
                                     url: `${myweb}`
                                 }
                             }, {
                             	urlButton: {
-                                displayText: 'Script🔖',
+                                displayText: 'GITHUB',
                                     url: `${sc}`
                                 }
                             }, {
                                 quickReplyButton: {
                                     displayText: '🍇All Menu🍇',
                                     id: `${prefix}allmenu`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '🍒List Menu🍒',
-                                    id: `${prefix}command`
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -3345,40 +3341,30 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             jpegThumbnail: fs.readFileSync('./media/Alexa.jpg')}, 
                             hydratedFooterText: `
 ┌─❖
-│「 Hi 👋 」
+│「 💔Queen Alexa 」
 └┬❖ 「 ${pushname} 」
-┌┤✑  How Are You? 😄
+┌┤✑  How Are You?
 │└───────────────┈ ⳹
-│ 「 BOT INFO 」
-│✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-│✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownername}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-│✙ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-│✙ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length}
+│ 👸 Queen-Alexa
+│ 🎚 Version = 1.0.0
+│ 👨‍💻 Owner : ${global.ownername} , ${global.owner}
+││
 └┬──────────────┈ ⳹
    │✑  Please Select The Button Below
    └───────────────┈ ⳹`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: `${myweb}`
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Script🔖',
+                                displayText: 'GITHUB',
                                     url: `${sc}`
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '🍇All Menu🍇',
+                                    displayText: 'MENU',
                                     id: `${prefix}allmenu`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '🍒List Menu🍒',
+                                    displayText: 'LIST MENU',
                                     id: `${prefix}command`
                                 }
                                 }, {

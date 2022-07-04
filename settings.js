@@ -1,8 +1,8 @@
-//════════════code═by═Alexa═════════════════════════════════════════//
+//════════════code═by═thisan═════════════════════════════════════════//
 //Don't change,copy
-//© 2022 Alexa team.
-//(ChamodKeshan)-(Tornymark)-(En-cuzier)
-//═════════════Alexa═══════════════//
+//© 2022 Asiata team.
+//Thisan01 mrsanon mrsanon1
+//═════════════Asiata═══════════════//
 
 const fs = require('fs')
 const chalk = require('chalk')
@@ -19,18 +19,18 @@ global.APIKeys = {
 change with my details,
 add you details*/
 
-global.owner = ['947']
-global.premium = ['947']
-global.ownernomer = '947'
-global.ownername = 'NEUTROX'
-global.botname = 'Queen-Alexa-MD'
-global.footer = 'Alexa.'
-global.ig = 'https://github.com/En-cuzier'
+global.owner = ['94766816809']
+global.premium = ['94766816809']
+global.ownernomer = '94766816809'
+global.ownername = 'THISAN'
+global.botname = 'SL-ASIATA V3'
+global.footer = 'SL-ASIATA'
+global.ig = 'https://github.com/Thisan01'
 global.region = 'Sri Lanka, Colombo'
-global.sc = 'https://github.com/En-cuzier/Queen-Alexa-MD'
+global.sc = 'https://github.com/Thisan01/SL-ASIATA'
 global.myweb = 'https://youtu.com'
-global.packname = 'Queen-Alexa'
-global.author = 'NEUTROX'
+global.packname = 'SL-ASIATA'
+global.author = 'THISAN'
 global.sessionName = 'session'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
@@ -59,7 +59,7 @@ global.mess = {
    umpanawal: 5,
    potionawal: 1
 }
-global.thumb = fs.readFileSync('./media/Alexa.jpg')
+global.thumb = fs.readFileSync('./media/Asiata.jpg')
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 global.fluming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=fluffy-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 global.flarun = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=runner-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='

@@ -1,8 +1,8 @@
-//═══════════════════════════════════════════════════════//
-//If you want to recode, reupload
-//© 2022 Alexa Bot Inc.
-//Thank you to Lord Buddha and DGxeon
-//════════════════════════════//
+//═══════════NEUTRO═X═══════════════════════════════════════════//
+//Don't copyright claim!!!,
+//උස්සන්න එපා පුතේ,උස්සන එකාට කෙ#වියන්//
+//© 2022 Alexa- ChamodKeshan.
+//════════════Queen-Alexa════════════════//
 require('./settings')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
@@ -84,7 +84,7 @@ const dgalexa = require('xfarr-api')
      getSapi,
     getGajah
    } = require('./storage/user/buruan.js')
-   let DarahAwal =  whatsalexa.rpg.darahawal
+   let DarahAwal =  global.rpg.darahawal
    const isDarah = cekDuluJoinAdaApaKagaDiJson(m.sender)   
    const isCekDarah = getDarah(m.sender)
    const isUmpan = getUmpan(m.sender)
@@ -134,13 +134,13 @@ module.exports = CMD = async (CMD, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
-        var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? whatsalexa.prefix
+        var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "No Name"
         const botNumber = await CMD.decodeJid(CMD.user.id)
-        const isCreator = [botNumber, ...whatsalexa.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
         const text = q = args.join(" ")
         const quoted = m.quoted ? m.quoted : m
@@ -158,7 +158,7 @@ module.exports = CMD = async (CMD, m, chatUpdate, store) => {
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
     	const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-    	const isPremium = isCreator || whatsalexa.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
+    	const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
 	    
         //member\\
         let picaks = [flaming,fluming,flarun,flasmurf]
@@ -166,35 +166,35 @@ module.exports = CMD = async (CMD, m, chatUpdate, store) => {
 		
           try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
-            let limitUser = isPremium ? whatsalexa.limitawal.premium : whatsalexa.limitawal.free
-            let user = whatsalexa.db.data.users[m.sender]
-            if (typeof user !== 'object') whatsalexa.db.data.users[m.sender] = {}
+            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
+            let user = global.db.data.users[m.sender]
+            if (typeof user !== 'object') global.db.data.users[m.sender] = {}
             if (user) {
                 if (!isNumber(user.afkTime)) user.afkTime = -1
                 if (!('afkReason' in user)) user.afkReason = ''
                 if (!isNumber(user.limit)) user.limit = limitUser
-            } else whatsalexa.db.data.users[m.sender] = {
+            } else global.db.data.users[m.sender] = {
                 afkTime: -1,
                 afkReason: '',
                 limit: limitUser,
             }
     
-            let chats = whatsalexa.db.data.chats[m.chat]
-            if (typeof chats !== 'object') whatsalexa.db.data.chats[m.chat] = {}
+            let chats = global.db.data.chats[m.chat]
+            if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
             if (chats) {
                 if (!('mute' in chats)) chats.mute = false
                 if (!('antilink' in chats)) chats.antilink = false
-            } else whatsalexa.db.data.chats[m.chat] = {
+            } else global.db.data.chats[m.chat] = {
                 mute: false,
                 antilink: false,
             }
 		
-	    let setting = whatsalexa.db.data.settings[botNumber]
-            if (typeof setting !== 'object') whatsalexa.db.data.settings[botNumber] = {}
+	    let setting = global.db.data.settings[botNumber]
+            if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 	    if (setting) {
 		if (!isNumber(setting.status)) setting.status = 0
 		if (!('autobio' in setting)) setting.autobio = false
-	    } else whatsalexa.db.data.settings[botNumber] = {
+	    } else global.db.data.settings[botNumber] = {
 		status: 0,
 		autobio: false,
 	    }
@@ -205,11 +205,11 @@ module.exports = CMD = async (CMD, m, chatUpdate, store) => {
 	
 	//group target\\
 const reply = (teks) => {
-            CMD.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${whatsalexa.botname}`,"body": ` Join Bot's Official GC`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./media/Alexa.jpg`),"sourceUrl": "https://chat.whatsapp.com/"}}}, { quoted: m})
+            CMD.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": ` Queen Alexa Official Support`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./media/404_error.jpg`),"sourceUrl": "https://chat.whatsapp.com/"}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            CMD.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${whatsalexa.botname}`,"body": ` Join Bot's Official GC`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./media/Alexa.jpg`),"sourceUrl": "https://chat.whatsapp.com/"}}}, { quoted: m})
+            CMD.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": ` Queen Alexa Official Support`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./media/error.jpg`),"sourceUrl": "https://chat.whatsapp.com/"}}}, { quoted: m})
         }
 	
         //Public & Self\\
@@ -226,9 +226,9 @@ const reply = (teks) => {
 	//reset limit every 12 hours\\
         let cron = require('node-cron')
         cron.schedule('00 12 * * *', () => {
-            let user = Object.keys(whatsalexa.db.data.users)
-            let limitUser = isPremium ? whatsalexa.limitawal.premium : whatsalexa.limitawal.free
-            for (let jid of user) whatsalexa.db.data.users[jid].limit = limitUser
+            let user = Object.keys(global.db.data.users)
+            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
+            for (let jid of user) global.db.data.users[jid].limit = limitUser
             console.log('Limit Reseted')
         }, {
             scheduled: true,
@@ -237,7 +237,7 @@ const reply = (teks) => {
         
 	//auto set bio\\
 	if (db.data.settings[botNumber].autobio) {
-	    let setting = whatsalexa.db.data.settings[botNumber]
+	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
 		await CMD.setStatus(`${CMD.user.name} | Runtime : ${runtime(uptime)}`)
@@ -298,8 +298,8 @@ const reply = (teks) => {
 		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
         
         //Respon Cmd with media\\
-        if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in whatsalexa.db.data.sticker)) {
-        let hash = whatsalexa.db.data.sticker[m.msg.fileSha256.toString('base64')]
+        if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
+        let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
         let { text, mentionedJid } = hash
         let messages = await generateWAMessage(m.chat, { text: text, mentions: mentionedJid }, {
             userJid: CMD.user.id,
@@ -553,7 +553,7 @@ Click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
 	    
 	    let mentionUser = [...new Set([...(m.mentionedJid || []), ...(m.quoted ? [m.quoted.sender] : [])])]
 	    for (let jid of mentionUser) {
-            let user = whatsalexa.db.data.users[jid]
+            let user = global.db.data.users[jid]
             if (!user) continue
             let afkTime = user.afkTime
             if (!afkTime || afkTime < 0) continue
@@ -566,7 +566,7 @@ It's been ${clockString(new Date - afkTime)}
         }
 
         if (db.data.users[m.sender].afkTime > -1) {
-            let user = whatsalexa.db.data.users[m.sender]
+            let user = global.db.data.users[m.sender]
             reply(`
 You Came Back Online From AFK${user.afkReason ? ' after ' + user.afkReason : ''}
 In ${clockString(new Date - user.afkTime)}
@@ -892,7 +892,7 @@ if (q.includes('--help')) return reply(examkosong)
  }
  break
 	    case 'afk': {
-                let user = whatsalexa.db.data.users[m.sender]
+                let user = global.db.data.users[m.sender]
                 user.afkTime = + new Date
                 user.afkReason = text
                 reply(`${m.pushName} Has Gone Afk/Offline${text ? ': ' + text : ''}`)
@@ -1354,9 +1354,9 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
             case 'setexif': {
                if (!isCreator) return replay(`${mess.owner}`)
                if (!text) return replay(`Example : ${prefix + command} packname|author`)
-          whatsalexa.packname = text.split("|")[0]
-          whatsalexa.author = text.split("|")[1]
-          reply(`Exif Has Been Successfully Changed to\n\n🐶 Packname : ${whatsalexa.packname}\n🐶 Author : ${whatsalexa.author}`)
+          global.packname = text.split("|")[0]
+          global.author = text.split("|")[1]
+          reply(`Exif Has Been Successfully Changed to\n\n🐶 Packname : ${global.packname}\n🐶 Author : ${global.author}`)
             }
             break
 	case 'kick': {
@@ -1461,7 +1461,7 @@ let teks = `╚»˙·٠•●♥ Tag All ♥●•٠·˙«╝
             }
             break
 	    case 'style': case 'styletext': {
-	        if (!isPremium && whatsalexa.db.data.users[m.sender].limit < 1) return reply(mess.endLimit) //wont response when limit runs out\\
+	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return reply(mess.endLimit) //wont response when limit runs out\\
 		db.data.users[m.sender].limit -= 1 // -1 limit
 		let { styletext } = require('./lib/scraper')
 		if (!text) return replay(`Enter Query Text!`)
@@ -1769,7 +1769,7 @@ break
                                 }
                             }]
                       let txt = `「 Alexa Bot Broadcast 」\n\n${text}`
-                      CMD.send5ButImg(i, txt, CMD.user.name, whatsalexa.thumb, btn)
+                      CMD.send5ButImg(i, txt, CMD.user.name, global.thumb, btn)
                     }
                 reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
             }
@@ -1803,7 +1803,7 @@ break
                                 }
                             }]
                       let txt = `「 Alexa Bot Broadcast 」\n\n${text}`
-                      CMD.send5ButImg(yoi, txt, CMD.user.name, whatsalexa.thumb, btn)
+                      CMD.send5ButImg(yoi, txt, CMD.user.name, global.thumb, btn)
 		}
 		reply('Broadcast Success')
             }
@@ -1861,12 +1861,12 @@ break
             reply(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
-                let encmedia = await CMD.sendImageAsSticker(m.chat, media, m, { packname: whatsalexa.packname, author: whatsalexa.author })
+                let encmedia = await CMD.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
                 if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 Seconds!')
                 let media = await quoted.download()
-                let encmedia = await CMD.sendVideoAsSticker(m.chat, media, m, { packname: whatsalexa.packname, author: whatsalexa.author })
+                let encmedia = await CMD.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
                 reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`)
@@ -1882,7 +1882,7 @@ reply(mess.wait)
 mee = await CMD.downloadAndSaveMediaMessage(quoted)
 mem = await TelegraPh(mee)
 meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}`
-memek = await CMD.sendImageAsSticker(m.chat, meme, m, { packname: whatsalexa.packname, author: whatsalexa.author })
+memek = await CMD.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
 await fs.unlinkSync(memek)
 }
 break
@@ -1907,7 +1907,7 @@ break
 		let [emoji1, emoji2] = text.split`+`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
-		    let encmedia = await CMD.sendImageAsSticker(m.chat, res.url, m, { packname: whatsalexa.packname, author: whatsalexa.author, categories: res.tags })
+		    let encmedia = await CMD.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
 		    await fs.unlinkSync(encmedia)
 		}
 	    }
@@ -2616,42 +2616,42 @@ case 'webtonsearch': case 'webtoon':
             }
             break
 	    case 'stalker': case 'stalk': {
-		if (!isPremium && whatsalexa.db.data.users[m.sender].limit < 1) return reply('Your Daily Limit Has Expired')
+		if (!isPremium && global.db.data.users[m.sender].limit < 1) return reply('Your Daily Limit Has Expired')
                 if (!text) return reply(`Example : ${prefix +command} type id\n\nList Type :\n1. ff (Free Fire)\n2. ml (Mobile Legends)\n3. aov (Arena Of Valor)\n4. cod (Call Of Duty)\n5. pb (point Blank)\n6. ig (Instagram)\n7. npm (https://npmjs.com)`)
                 let [type, id, zone] = args
                 if (type.toLowerCase() == 'ff') {
                     if (!id) return reply(`No Query id, Example ${prefix + command} ff 552992060`)
-                    let anu = await fetchJson(api('zenz', '/api/nickff', { apikey: whatsalexa.APIKeys[whatsalexa.APIs['zenz']], query: id }))
+                    let anu = await fetchJson(api('zenz', '/api/nickff', { apikey: global.APIKeys[global.APIs['zenz']], query: id }))
                     if (anu.status == false) return reply(anu.result.message)
                     reply(`ID : ${anu.result.gameId}\nUsername : ${anu.result.userName}`)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'ml') {
                     if (!id) return reply(`No Query id, Example : ${prefix + command} ml 214885010 2253`)
                     if (!zone) return reply(`No Query id, Example : ${prefix + command} ml 214885010 2253`)
-                    let anu = await fetchJson(api('zenz', '/api/nickml', { apikey: whatsalexa.APIKeys[whatsalexa.APIs['zenz']], query: id, query2: zone }))
+                    let anu = await fetchJson(api('zenz', '/api/nickml', { apikey: global.APIKeys[global.APIs['zenz']], query: id, query2: zone }))
                     if (anu.status == false) return reply(anu.result.message)
                     reply(`ID : ${anu.result.gameId}\nZone : ${anu.result.zoneId}\nUsername : ${anu.result.userName}`)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'aov') {
                     if (!id) return reply(`No Query id, Example ${prefix + command} aov 293306941441181`)
-                    let anu = await fetchJson(api('zenz', '/api/nickaov', { apikey: whatsalexa.APIKeys[whatsalexa.APIs['zenz']], query: id }))
+                    let anu = await fetchJson(api('zenz', '/api/nickaov', { apikey: global.APIKeys[global.APIs['zenz']], query: id }))
                     if (anu.status == false) return reply(anu.result.message)
                     reply(`ID : ${anu.result.gameId}\nUsername : ${anu.result.userName}`)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'cod') {
                     if (!id) return reply(`No Query id, Example ${prefix + command} cod 6290150021186841472`)
-                    let anu = await fetchJson(api('zenz', '/api/nickcod', { apikey: whatsalexa.APIKeys[whatsalexa.APIs['zenz']], query: id }))
+                    let anu = await fetchJson(api('zenz', '/api/nickcod', { apikey: global.APIKeys[global.APIs['zenz']], query: id }))
                     if (anu.status == false) return reply(anu.result.message)
                     reply(`ID : ${anu.result.gameId}\nUsername : ${anu.result.userName}`)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'pb') {
                     if (!id) return reply(`No Query id, Example ${prefix + command} pb riio46`)
-                    let anu = await fetchJson(api('zenz', '/api/nickpb', { apikey: whatsalexa.APIKeys[whatsalexa.APIs['zenz']], query: id }))
+                    let anu = await fetchJson(api('zenz', '/api/nickpb', { apikey: global.APIKeys[global.APIs['zenz']], query: id }))
                     if (anu.status == false) return reply(anu.result.message)
                     reply(`ID : ${anu.result.gameId}\nUsername : ${anu.result.userName}`)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'ig') {
-                    if (!id) return reply(`No Query username, Example : ${prefix + command} ig josephxeon13`)
+                    if (!id) return reply(`No Query username, Example : ${prefix + command} ig josephQueen-Alexa13`)
                     let { result: anu } = await fetchJson(api('zenz', '/api/stalker/ig', { username: id }, 'apikey'))
                     if (anu.status == false) return reply(anu.result.message)
                     CMD.sendMedia(m.chat, anu.caption.profile_hd, '', `🐶 Full Name : ${anu.caption.full_name}\n🐶 User Name : ${anu.caption.user_name}\n🐶 ID ${anu.caption.user_id}\n🐶 Following : ${anu.caption.followers}\n🐶 Followers : ${anu.caption.following}\n🐶 Bussines : ${anu.caption.bussines}\n🐶 Professional : ${anu.caption.profesional}\n🐶 Verified : ${anu.caption.verified}\n🐶 Private : ${anu.caption.private}\n🐶 Bio : ${anu.caption.biography}\n🐶 Bio Url : ${anu.caption.bio_url}`, m)
@@ -2972,8 +2972,8 @@ ${id}`)
                 if (!m.quoted.fileSha256) return reply(`SHA256 Hash Missing`)
                 if (!text) return reply(`For What Command?`)
                 let hash = m.quoted.fileSha256.toString('base64')
-                if (whatsalexa.db.data.sticker[hash] && whatsalexa.db.data.sticker[hash].locked) return reply(`You Have No Permission To Change This Sticker Command`)
-                whatsalexa.db.data.sticker[hash] = {
+                if (global.db.data.sticker[hash] && global.db.data.sticker[hash].locked) return reply(`You Have No Permission To Change This Sticker Command`)
+                global.db.data.sticker[hash] = {
                     text,
                     mentionedJid: m.mentionedJid,
                     creator: m.sender,
@@ -2986,8 +2986,8 @@ ${id}`)
             case 'delcmd': {
                 let hash = m.quoted.fileSha256.toString('base64')
                 if (!hash) return reply(`No Hashes`)
-                if (whatsalexa.db.data.sticker[hash] && whatsalexa.db.data.sticker[hash].locked) return reply(`You Have No Permission To Delete This Sticker Command`)
-                delete whatsalexa.db.data.sticker[hash]
+                if (global.db.data.sticker[hash] && global.db.data.sticker[hash].locked) return reply(`You Have No Permission To Delete This Sticker Command`)
+                delete global.db.data.sticker[hash]
                 reply(`Done!`)
             }
             break
@@ -2995,9 +2995,9 @@ ${id}`)
                 let teks = `
 *Hash List*
 Info: *bold* hash is Locked
-${Object.entries(whatsalexa.db.data.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}
+${Object.entries(global.db.data.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}
 `.trim()
-                CMD.sendText(m.chat, teks, m, { mentions: Object.values(whatsalexa.db.data.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
+                CMD.sendText(m.chat, teks, m, { mentions: Object.values(global.db.data.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
             }
             break
             case 'lockcmd': {
@@ -3005,15 +3005,15 @@ ${Object.entries(whatsalexa.db.data.sticker).map(([key, value], index) => `${ind
                 if (!m.quoted) return reply(`Reply Message!`)
                 if (!m.quoted.fileSha256) return reply(`SHA256 Hash Missing`)
                 let hash = m.quoted.fileSha256.toString('base64')
-                if (!(hash in whatsalexa.db.data.sticker)) return reply(`Hash Not Found In Database`)
-                whatsalexa.db.data.sticker[hash].locked = !/^un/i.test(command)
+                if (!(hash in global.db.data.sticker)) return reply(`Hash Not Found In Database`)
+                global.db.data.sticker[hash].locked = !/^un/i.test(command)
                 reply('Done!')
             }
             break
             case 'addmsg': {
                 if (!m.quoted) return reply(`Reply Message You Want To Save In Database`)
                 if (!text) return reply(`Example : ${prefix + command} File Name`)
-                let msgs = whatsalexa.db.data.database
+                let msgs = global.db.data.database
                 if (text.toLowerCase() in msgs) return reply(`'${text}' Has Been Registered In The Message List`)
                 msgs[text.toLowerCase()] = quoted.fakeObj
 reply(`Successfully Added Message In Message List As '${text}'
@@ -3025,14 +3025,14 @@ View List Of Messages With ${prefix}listmsg`)
             break
             case 'getmsg': {
                 if (!text) return reply(`Example : ${prefix + command} file name\n\nView Message List With ${prefix}listmsg`)
-                let msgs = whatsalexa.db.data.database
+                let msgs = global.db.data.database
                 if (!(text.toLowerCase() in msgs)) return reply(`'${text}' Not Listed In The Message List`)
                 CMD.copyNForward(m.chat, msgs[text.toLowerCase()], true)
             }
             break
             case 'listmsg': {
                 let msgs = JSON.parse(fs.readFileSync('./database/database.json'))
-	        let seplit = Object.entries(whatsalexa.db.data.database).map(([nama, isi]) => { return { nama, ...isi } })
+	        let seplit = Object.entries(global.db.data.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = '「 DATABASE LIST 」\n\n'
 		for (let i of seplit) {
 		    teks += `🐕 *Name :* ${i.nama}\n🐕 *Type :* ${getContentType(i.message).replace(/Message/i, '')}\n────────────────────────\n\n`
@@ -3041,7 +3041,7 @@ View List Of Messages With ${prefix}listmsg`)
 	    }
 	    break
             case 'delmsg': case 'deletemsg': {
-	        let msgs = whatsalexa.db.data.database
+	        let msgs = global.db.data.database
 	        if (!(text.toLowerCase() in msgs)) return reply(`'${text}' Not Listed In The Message List`)
 		delete msgs[text.toLowerCase()]
 		reply(`Delete Successfully '${text}' From The Message list`)
@@ -3236,14 +3236,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': {
-                CMD.sendContact(m.chat, whatsalexa.owner, m)
+                CMD.sendContact(m.chat, global.owner, m)
             }
             break
 case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'cuddle':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
 					reply(mess.wait)
 					axios.get(`https://api.waifu.pics/sfw/${command}`)
 					.then(({data}) => {
-						CMD.sendImageAsSticker(m.chat, data.url, m, { packname: whatsalexa.packname, author: whatsalexa.author })
+						CMD.sendImageAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
 					})
 					break
 				case 'waifu': case 'loli':
@@ -3292,12 +3292,12 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │ 「 BOT INFO 」
 │✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${whatsalexa.botname}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${whatsalexa.ownername}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${whatsalexa.owner}
+│✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
+│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownername}
+│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
 │✙ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
 │✙ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(whatsalexa.db.data.users).length}
+│✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length}
 └┬──────────────┈ ⳹
    │✑  Please Select The Button Below
    └───────────────┈ ⳹`,
@@ -3352,12 +3352,12 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │ 「 BOT INFO 」
 │✙ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │✙ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${whatsalexa.botname}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${whatsalexa.ownername}
-│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${whatsalexa.owner}
+│✙ 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
+│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownername}
+│✙ 𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
 │✙ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
 │✙ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(whatsalexa.db.data.users).length}
+│✙ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length}
 └┬──────────────┈ ⳹
    │✑  Please Select The Button Below
    └───────────────┈ ⳹`,
@@ -3399,7 +3399,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
                     title: `Hi ${pushname}`,
                     description: `Please Choose The Menu\n\n`,
                     buttonText: "Menu",
-                    footerText: `${whatsalexa.footer}`,
+                    footerText: `${global.footer}`,
                     listType: "SINGLE_SELECT",
                     sections: [{
 								"title": "Main Features",
@@ -4225,7 +4225,7 @@ break
 		if (isCmd && budy.toLowerCase() != undefined) {
 		    if (m.chat.endsWith('broadcast')) return
 		    if (m.isBaileys) return
-		    let msgs = whatsalexa.db.data.database
+		    let msgs = global.db.data.database
 		    if (!(budy.toLowerCase() in msgs)) return
 		    CMD.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 		}

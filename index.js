@@ -28,18 +28,18 @@ try {
 const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
 
-whatsalexa.api = (name, path = '/', query = {}, apikeyqueryname) => (name in whatsalexa.APIs ? whatsalexa.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: whatsalexa.APIKeys[name in whatsalexa.APIs ? whatsalexa.APIs[name] : name] } : {}) })) : '')
+global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
-whatsalexa.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-whatsalexa.db = new Low(
+global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
     new cloudDBAdapter(opts['db']) : /mongodb/.test(opts['db']) ?
       new mongoDB(opts['db']) :
       new JSONFile(`database/database.json`)
 )
-whatsalexa.db.data = {
+global.db.data = {
     users: {},
     chats: {},
     database: {},
@@ -47,12 +47,12 @@ whatsalexa.db.data = {
     settings: {},
     others: {},
     sticker: {},
-    ...(whatsalexa.db.data || {})
+    ...(global.db.data || {})
 }
 
 // save database every 30seconds
-if (whatsalexa.db) setInterval(async () => {
-    if (whatsalexa.db.data) await whatsalexa.db.write()
+if (global.db) setInterval(async () => {
+    if (global.db.data) await global.db.write()
   }, 30 * 1000)
 
 async function startCMD() {
@@ -69,7 +69,7 @@ async function startCMD() {
     CMD.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
-    let pa7rick = await CMD.sendContact(callerId, whatsalexa.owner)
+    let pa7rick = await CMD.sendContact(callerId, global.owner)
     CMD.sendMessage(callerId, { text: `Automatic Block System!\nDon't Call Bot!\nPlease Ask Or Contact The Owner To Unblock You!`}, { quoted : pa7rick })
     await sleep(8000)
     await CMD.updateBlockStatus(callerId, "block")
@@ -452,7 +452,7 @@ Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURICom
        if (options.asSticker || /webp/.test(mime)) {
         let { writeExif } = require('./lib/exif')
         let media = { mimetype: mime, data }
-        pathFile = await writeExif(media, { packname: options.packname ? options.packname : whatsalexa.packname, author: options.author ? options.author : whatsalexa.author, categories: options.categories ? options.categories : [] })
+        pathFile = await writeExif(media, { packname: options.packname ? options.packname : global.packname, author: options.author ? options.author : global=.author, categories: options.categories ? options.categories : [] })
         await fs.promises.unlink(filename)
         type = 'sticker'
         mimetype = 'image/webp'
